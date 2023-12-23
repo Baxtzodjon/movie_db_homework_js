@@ -11,8 +11,13 @@
     <header class="header">
         <div class="header__search">
             <form action="#">
-                <input type="text" placeholder="Поиск">
+                <input type="text" placeholder="Поиск" class="search">
             </form>
+
+            <h1 class="finded">
+                <!-- <li class="finded_title">Asus Tuf Gaming F15</li> -->
+            </h1>
+            
         </div>
         <div class="header__logo">
             <img src="icons/Logotype.svg" alt="logo">
@@ -22,30 +27,50 @@
         <div class="promo__menu">
             <nav class="promo__menu-list">
                 <ul>
-                    <li><a class="promo__menu-item promo__menu-item_active" href="#">Фильмы</a></li>
-                    <li><a class="promo__menu-item" href="#">Сериалы</a></li>
-                    <li><a class="promo__menu-item" href="#">Мультфильмы</a></li>
-                    <li><a class="promo__menu-item" href="#">Клипы</a></li>
-                    <li><a class="promo__menu-item" href="#">Трейлеры</a></li>
+                    <li><a class="promo__menu-item promo__menu-item_active" href="#">Action</a></li>
+                    <li><a class="promo__menu-item" href="#">Adventure</a></li>
+                    <li><a class="promo__menu-item" href="#">Sci-Fi</a></li>
+                    <li><a class="promo__menu-item" href="#">Drama</a></li>
+                    <li><a class="promo__menu-item" href="#">Fantasy</a></li>
+                    <li><a class="promo__menu-item" href="#">Comedy</a></li>
+                    <li><a class="promo__menu-item" href="#">Horor</a></li>
                 </ul>
             </nav>
         </div>
         <div class="promo__content">
             <div class="promo__bg">
-                <div class="promo__genre">КОМЕДИЯ</div>
-                <div class="promo__title">МАРСИАНИН</div>
-                <div class="promo__descr">ИСТОРИЯ ЧЕЛОВЕКА, ВЫЖИВШЕГО НА ЧУЖОЙ ПЛАНЕТЕ В ОДИНОЧКУ</div>
+                <div class="promo__genre">Action</div>
+                <div class="promo__title">Guardians of the Galaxy</div>
+                <div class="promo__descr">A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.</div>
                 <div class="promo__ratings">
-                    <span>IMDb: 8.0</span>
-                    <span>Кинопоиск: 7.7</span>
+                    <p class="p_text">IMDb: 8.0</p>
+                    <form>  
+                        <div class="rating_star">
+                            <input type="radio" name="rate" id="rating-opt5" data-idx="0" hidden>
+                            <label for="rating-opt5"><span>Very Satisfied</span></label>
+
+                            <input type="radio" name="rate" id="rating-opt4" data-idx="1" hidden>
+                            <label for="rating-opt4"><span>Somewhat Satisfied</span></label>
+
+                            <input type="radio" name="rate" id="rating-opt3" data-idx="2" hidden>
+                            <label for="rating-opt3"><span>Neutral</span></label>
+
+                            <input type="radio" name="rate" id="rating-opt2" data-idx="3" hidden>
+                            <label for="rating-opt2"><span>Dissatisfied</span></label>
+
+                            <input type="radio" name="rate" id="rating-opt1" data-idx="4" hidden>
+                            <label for="rating-opt1"><span>Very Dissatisfied</span></label>
+                        </div>
+                    </form>
+                    <!-- <span>Кинопоиск: 7.7</span> -->
                 </div>
             </div>
             <div class="promo__interactive">
                 <div>
                     <div class="promo__interactive-title">ПРОСМОТРЕННЫЕ ФИЛЬМЫ</div>
                     <ul class="promo__interactive-list">
-                        <li class="promo__interactive-item">ЛОГАН
-                            <div class="delete"></div>
+                        <!-- <li class="promo__interactive-item">ЛОГАН
+                            <div promo__bg class="delete"></div>
                         </li>
                         <li class="promo__interactive-item">ЛИГА СПРАВЕДЛИВОСТИ
                             <div class="delete"></div>
@@ -58,7 +83,7 @@
                         </li>
                         <li class="promo__interactive-item">СКОТТ ПИЛИГРИМ ПРОТИВ...
                             <div class="delete"></div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div>
@@ -82,6 +107,6 @@
         </div>
     </main>
 
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>
