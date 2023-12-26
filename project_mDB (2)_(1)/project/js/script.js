@@ -10,6 +10,7 @@ let menuItems = document.querySelectorAll('.promo__menu-item');
 let form = document.querySelector('form');
 let inp_search = form.querySelector('.search')
 let ul_list = document.querySelector('ul')
+let ul_cont = document.querySelector('.ul_container')
 
 let genres = ['All', ...new Set(movies.map(item => item.Genre))]
 
@@ -43,7 +44,51 @@ function reload(arr, place) {
         }
 
 
-        menuItems.forEach(function (item) {
+        show_aside()
+        function show_aside() {
+
+            ul_cont.innerHTML = ''
+
+            for (let item of arr) {
+                // create
+                let first_list = document.createElement('li')
+                let links = document.createElement('a')
+
+
+                // styling
+                links.classList.add('promo__menu-item')
+                links.setAttribute('href', "#")
+
+                links.innerHTML = item.Genre.toUpperCase()
+
+                // append 
+                ul_cont.append(first_list, links)
+
+
+                // functions
+                links.addEventListener('click', function () {
+                    let menuItems = document.getElementsByClassName('promo__menu-item');
+
+                    for (let menuItem of menuItems) {
+                        menuItem.classList.remove('active');
+                    }
+
+                    links.classList.add('active');
+                });
+                
+
+                links.onclick = () => {
+                    setMovie(item)
+                    promo__genre.innerHTML = item.Genre
+                    promo__title.innerHTML = item.Title
+                    promo__descr.innerHTML = item.Plot
+                    p_text.innerHTML = `IMDb: ${item.imdbRating}`
+                }
+            }
+        }
+
+
+        /* menuItems.forEach(function (item) {
             item.addEventListener('click', function () {
                 menuItems.forEach(function (item) {
                     item.classList.remove('promo__menu-item_active');
@@ -51,7 +96,7 @@ function reload(arr, place) {
 
                 this.classList.add('promo__menu-item_active');
             });
-        });
+        }); */
 
 
         inp_search.onkeyup = (event) => {
@@ -111,7 +156,6 @@ function reload(arr, place) {
 function setMovie(item) {
     promo__bg.style.backgroundImage = `url(${item.Poster}`
     promo__bg.style.transition = '.5s ease-in-out'
-
 }
 
 /* Задания на урок:

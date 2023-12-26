@@ -139,6 +139,11 @@
     color: #FFD500;
 }
 
+.active {
+    border-left: 2px solid #FFD500;
+    color: #FFD500;
+}
+
 .promo__content {
     width: calc(100% - 600px)
 }
