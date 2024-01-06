@@ -12,6 +12,8 @@ let inp_search = form.querySelector('.search')
 let ul_list = document.querySelector('ul')
 let ul_cont = document.querySelector('.ul_container')
 
+const genre_list = document.querySelector('.genress_list')
+
 let genres = ['All', ...new Set(movies.map(item => item.Genre))]
 
 console.log(
@@ -25,7 +27,7 @@ function reload(arr, place) {
     setMovie(arr[0])
 
     for (let item of arr) {
-        let li = document.createElement('li')
+        /* let li = document.createElement('li')
         let div = document.createElement('div')
 
         li.innerHTML = item.Title
@@ -41,51 +43,133 @@ function reload(arr, place) {
             promo__title.innerHTML = item.Title
             promo__descr.innerHTML = item.Plot
             p_text.innerHTML = `IMDb: ${item.imdbRating}`
-        }
+        } */
 
 
-        show_aside()
-        function show_aside() {
+        reload(movies)
+        reload_genres(genres)
 
-            ul_cont.innerHTML = ''
+        function reload(arr) {
+            ul_list.innerHTML = ""
+            cont.innerHTML = ''
 
             for (let item of arr) {
                 // create
-                let first_list = document.createElement('li')
-                let links = document.createElement('a')
+                let li = document.createElement('li')
+                let div = document.createElement('div')
 
+                li.innerHTML = item.Title
+                li.classList.add('promo__interactive-item')
+                div.classList.add('delete')
 
-                // styling
-                links.classList.add('promo__menu-item')
-                links.setAttribute('href', "#")
+                place.append(li)
+                li.append(div)
 
-                links.innerHTML = item.Genre.toUpperCase()
-
-                // append 
-                ul_cont.append(first_list, links)
-
-
-                // functions
-                links.addEventListener('click', function () {
-                    let menuItems = document.getElementsByClassName('promo__menu-item');
-
-                    for (let menuItem of menuItems) {
-                        menuItem.classList.remove('active');
-                    }
-
-                    links.classList.add('active');
-                });
-                
-
-                links.onclick = () => {
+                li.onclick = () => {
                     setMovie(item)
                     promo__genre.innerHTML = item.Genre
                     promo__title.innerHTML = item.Title
                     promo__descr.innerHTML = item.Plot
                     p_text.innerHTML = `IMDb: ${item.imdbRating}`
                 }
+
+                let listt = document.querySelectorAll('.promo__interactive-list li');
+
+                listt.forEach((el) => {
+                    let trashIcon = document.createElement('div');
+                    trashIcon.classList.add('delete');
+                    el.append(trashIcon);
+
+                    trashIcon.onclick = () => {
+                        el.remove()
+                    }
+                });
             }
         }
+
+        function reload_genres(arr) {
+            genre_list.innerHTML = ''
+            let sel_idx = 0
+
+
+            for (let item of arr) {
+                let p_span = document.createElement('p')
+                let idx = arr.indexOf(item)
+
+                p_span.innerHTML = item
+
+                if (idx === 0) {
+                    p_span.classList.add('selected_genre')
+                }
+
+                genre_list.append(p_span)
+
+                p_span.onclick = () => {
+                    let spans = document.querySelectorAll('.genress_list p')
+
+                    spans[sel_idx].classList.remove('selected_genre')
+                    p_span.classList.add('selected_genre')
+                    sel_idx = idx
+
+                    if (item === "All") {
+                        reload(movies, ul_list)
+                        return
+                    }
+
+                    let filtered = movies.filter(movie => {
+                        if (movie.Genre.toLowerCase() === item.toLowerCase()) {
+                            return movie
+                        }
+                    })
+
+                    reload(filtered, ul_list)
+                }
+            }
+        }
+
+
+        // show_aside()
+        // function show_aside() {
+
+        //     ul_cont.innerHTML = ''
+
+        //     for (let item of arr) {
+        //         // create
+        //         let first_list = document.createElement('li')
+        //         let links = document.createElement('a')
+
+
+        //         // styling
+        //         links.classList.add('promo__menu-item')
+        //         links.setAttribute('href', "#")
+
+        //         links.innerHTML = item.Genre.toUpperCase()
+
+        //         // append 
+        //         ul_cont.append(first_list, links)
+
+
+        //         // functions
+        //         links.addEventListener('click', function () {
+        //             let menuItems = document.getElementsByClassName('promo__menu-item');
+
+        //             for (let menuItem of menuItems) {
+        //                 menuItem.classList.remove('active');
+        //             }
+
+        //             links.classList.add('active');
+        //         });
+
+
+        //         links.onclick = () => {
+        //             setMovie(item)
+        //             promo__genre.innerHTML = item.Genre
+        //             promo__title.innerHTML = item.Title
+        //             promo__descr.innerHTML = item.Plot
+        //             p_text.innerHTML = `IMDb: ${item.imdbRating}`
+        //         }
+        //     }
+        // }
 
 
         /* menuItems.forEach(function (item) {
@@ -109,10 +193,10 @@ function reload(arr, place) {
                 }
             })
 
-            show_results(filtered);
+            reload(filtered);
         }
 
-        function show_results(arr) {
+       /*  function show_result(arr) {
             ul_list.innerHTML = ""
 
             for (let item of arr) {
@@ -134,8 +218,7 @@ function reload(arr, place) {
                 }
 
             }
-        }
-
+        } */
     }
 
     let list = document.querySelectorAll('.promo__interactive-list li');

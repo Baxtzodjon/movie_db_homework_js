@@ -150,7 +150,8 @@
 
 .promo__bg {
     height: 360px;
-    background: url("https://3.bp.blogspot.com/-UTaikqU2-Eg/WNUSKUnZ4CI/AAAAAAAAiBI/t9joQ-25CGYCUlk8PKoNf3RyCT0weJJJACLcB/s1600/GOTGV2.jpg") center center/cover no-repeat; /* ../img/mars.webp */
+    background: url("https://3.bp.blogspot.com/-UTaikqU2-Eg/WNUSKUnZ4CI/AAAAAAAAiBI/t9joQ-25CGYCUlk8PKoNf3RyCT0weJJJACLcB/s1600/GOTGV2.jpg") center center/cover no-repeat;
+    /* ../img/mars.webp */
     background-position: top;
     padding: 107px 0 0 61px
 }
@@ -225,7 +226,7 @@ label::before {
 
 span {
     opacity: 0;
-    position: absolute; 
+    position: absolute;
     left: 100px;
     bottom: 50px;
     text-align: center;
@@ -242,7 +243,7 @@ label:hover span {
     letter-spacing: 0;
 }
 
-input:checked ~ label::before {
+input:checked~label::before {
     content: "\2605";
     color: #FFD500;
     filter: drop-shadow(0 0 4px);
@@ -439,6 +440,31 @@ input:checked ~ label::before {
 .promo__adv img {
     width: 100%;
     margin-bottom: 10px
+}
+
+.genress_list {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.genress_list p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 35px;
+    color: #FFF;
+    padding: 15px;
+}
+
+.genress_list p:hover {
+    transform: scale(1.05);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 37px;    
+    color: #FFD500;
 }
 
 /*# sourceMappingURL=style.min.css.map */
